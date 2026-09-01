@@ -262,16 +262,17 @@ ul {
   border: none;
   cursor: pointer;
   z-index: 1001;
-  gap: 6px;
+  gap: 0;
 }
 /* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
 
 .hamburger {
   width: 28px;
-  height: 2px;
+  height: 3px;
   background: var(--negro-grafito);
   position: relative;
   transition: all var(--transition-fast);
+  border-radius: 2px;
 }
 /* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
 
@@ -279,19 +280,21 @@ ul {
 .hamburger::after {
   content: '';
   position: absolute;
+  left: 0;
   width: 100%;
-  height: 2px;
+  height: 3px;
   background: var(--negro-grafito);
   transition: all var(--transition-fast);
+  border-radius: 2px;
 }
 /* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
 
 .hamburger::before {
-  top: -8px;
+  top: -10px;
 }
 
 .hamburger::after {
-  top: 8px;
+  top: 10px;
 }
 /* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
 
@@ -585,7 +588,7 @@ ul {
 
 /* === 9. Historia Section === */
 .historia {
-  padding: 120px 0;
+  padding: 80px 0;
   background: var(--bg-secondary);
   position: relative;
 }
@@ -595,6 +598,20 @@ ul {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
+  align-items: center;
+}
+
+.historia-grid.reverse .historia-text {
+  order: 1;
+}
+
+.historia-grid.reverse .historia-image {
+  order: -1;
+}
+
+.historia-image {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -642,10 +659,13 @@ ul {
 /* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
 
 .historia-img {
-  width: 100%;
+  width: 80%;
+  max-width: 300px;
   height: auto;
-  border-radius: 12px;
+  border-radius: 10px;
   transition: transform var(--transition-smooth);
+  display: block;
+  margin: 0 auto;
 }
 
 .image-frame:hover .historia-img {
@@ -663,7 +683,7 @@ ul {
 
 /* === 10. Timeline Section === */
 .timeline-section {
-  padding: 100px 0;
+  padding: 70px 0;
   background: var(--bg-primary);
 }
 /* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
@@ -750,7 +770,7 @@ ul {
 
 /* === 11. Proyectos Section === */
 .proyectos {
-  padding: 120px 0;
+  padding: 80px 0;
   background: var(--bg-secondary);
 }
 
@@ -790,13 +810,14 @@ ul {
   aspect-ratio: 16/10;
   overflow: hidden;
   background: var(--bg-primary);
+  border-radius: 10px 10px 0 0;
 }
 
 .project-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 25%;
+  object-position: center center;
   transition: transform var(--transition-smooth);
 }
 /* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
@@ -883,7 +904,7 @@ ul {
 
 /* === 12. Video Section === */
 .video-section {
-  padding: 120px 0;
+  padding: 80px 0;
   background: var(--bg-primary);
 }
 
@@ -1019,16 +1040,17 @@ ul {
 
 /* === 14. Galería Section === */
 .galeria {
-  padding: 120px 0;
+  padding: 80px 0;
   background: var(--bg-secondary);
 }
 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 280px;
-  gap: 20px;
+  grid-auto-rows: 200px;
+  gap: 16px;
   margin-top: 48px;
+  justify-items: center;
 }
 /* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
 
@@ -1099,7 +1121,7 @@ ul {
 
 /* === 15. Misión Section === */
 .mision {
-  padding: 120px 0;
+  padding: 80px 0;
   background: var(--bg-secondary);
 }
 
@@ -1185,7 +1207,7 @@ ul {
 
 /* === 16. Inspiraciones Section === */
 .inspiraciones {
-  padding: 100px 0;
+  padding: 70px 0;
   background: var(--bg-primary);
 }
 
@@ -1254,7 +1276,7 @@ ul {
 
 /* === 17. Contacto Section === */
 .contacto {
-  padding: 120px 0;
+  padding: 80px 0;
   background: var(--bg-secondary);
 }
 /* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
@@ -1534,26 +1556,28 @@ ul {
 
 /* === 22. Galería de Proyectos === */
 .galeria-proyectos {
-  padding: 120px 0;
+  padding: 80px 0;
   background: var(--bg-secondary);
 }
 
 .galeria-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 16px;
   margin-top: 48px;
+  justify-items: center;
 }
 /* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
 
 .galeria-item {
   position: relative;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
   box-shadow: var(--shadow-md);
   transition: all var(--transition-smooth);
   aspect-ratio: 1/1;
+  width: 100%;
 }
 
 .galeria-item:hover {
@@ -1612,7 +1636,7 @@ ul {
 
 /* === 23. Calificación === */
 .calificacion {
-  padding: 100px 0;
+  padding: 70px 0;
   background: var(--bg-secondary);
   text-align: center;
 }
@@ -1684,7 +1708,8 @@ ul {
   }
 
   .gallery-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    grid-auto-rows: 200px;
   }
 
   .inspiraciones-grid {
@@ -1718,7 +1743,8 @@ ul {
   .nav {
     position: fixed;
     inset: 0;
-    left: auto;
+    left: 0;
+    right: 0;
     transform: none;
     background: rgba(232, 245, 233, 1);
     backdrop-filter: blur(20px);
@@ -1757,15 +1783,21 @@ ul {
 
   .hero-content {
     padding-top: calc(var(--header-height) + 30px);
+    text-align: center;
   }
 
   .hero-logo-img {
     max-width: 220px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-badge {
     font-size: 0.7rem;
     padding: 6px 16px;
+    align-self: flex-start;
+    margin-left: 0;
+    margin-right: auto;
   }
 
   .hero-tagline {
@@ -1774,23 +1806,54 @@ ul {
 
   .hero-description {
     font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  .hero {
+    overflow: visible;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 40px;
   }
 
   .hero-portrait {
     position: relative;
+    width: 85%;
+    max-width: 300px;
+    height: 360px;
+    margin: 24px auto 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+  }
+
+  .hero-portrait img {
     width: 100%;
-    height: 300px;
-    margin-top: 20px;
+    height: 100%;
+    object-position: center 30%;
+    object-fit: cover;
   }
 
   .hero-portrait-gradient {
-    background: linear-gradient(to bottom, #1a1f16 0%, rgba(26, 31, 22, 0.8) 30%, transparent 100%);
+    background: linear-gradient(to bottom, transparent 0%, transparent 60%, rgba(26, 31, 22, 0.6) 85%, #1a1f16 100%);
   }
 
   .historia-grid,
   .mision-grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  .historia-grid .historia-text,
+  .historia-grid .historia-image {
+    order: 0;
+  }
+
+  .historia-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .projects-grid {
@@ -1804,7 +1867,7 @@ ul {
 
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 220px;
+    grid-auto-rows: 180px;
   }
 
   .contacto-grid {
@@ -1857,6 +1920,8 @@ ul {
 
   .hero-logo-img {
     max-width: 180px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-badge {
@@ -1888,7 +1953,8 @@ ul {
   }
 
   .hero-portrait {
-    height: 250px;
+    height: 300px;
+    width: 88%;
   }
 
   .historia-grid,
@@ -2059,50 +2125,20 @@ ul {
 /* Marca de agua estilo Windows */
 .watermark-windows {
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  bottom: 20px;
+  right: 20px;
   z-index: 9999;
   pointer-events: none;
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  padding: 8px 14px;
-  border-radius: 4px;
 }
 /* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
 
 .watermark-windows-logo {
-  width: 32px;
-  height: 32px;
+  width: 50px;
+  height: 50px;
   object-fit: contain;
   border-radius: 2px;
-  opacity: 0.7;
-}
-/* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
-
-.watermark-windows-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-
-.watermark-windows-title {
-  font-family: var(--font-title);
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-/* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
-
-.watermark-windows-sub {
-  font-family: var(--font-body);
-  font-size: 0.55rem;
-  color: #aaa;
-  letter-spacing: 0.5px;
+  opacity: 0.5;
 }
 /* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
