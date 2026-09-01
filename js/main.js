@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             menuToggle.classList.toggle('active');
             document.querySelector('.header').classList.toggle('nav-open');
             document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
-// TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion.
+            menuToggle.setAttribute('aria-expanded', nav.classList.contains('active'));
         });
 
         navLinks.forEach(link => {
@@ -35,14 +35,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // HEADER SCROLL EFFECT
     // ============================================
     const header = document.getElementById('header');
+    let lastScrollY = 0;
+    let ticking = false;
 
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 80) {
+    function updateHeader() {
+        const scrolled = window.pageYOffset;
+        if (scrolled > 80) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
-    });
+        lastScrollY = scrolled;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(updateHeader);
+            ticking = true;
+        }
+    }, { passive: true });
 
     // ============================================
     // SMOOTH SCROLL
@@ -91,13 +103,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroBg = document.querySelector('.hero-bg-img');
     
     if (heroBg) {
+        let heroTicking = false;
         window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-// TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion.
-            if (scrolled < window.innerHeight) {
-                heroBg.style.transform = 'translateY(' + (scrolled * 0.3) + 'px) scale(1.1)';
+            if (!heroTicking) {
+                window.requestAnimationFrame(function() {
+                    const scrolled = window.pageYOffset;
+                    if (scrolled < window.innerHeight) {
+                        heroBg.style.transform = 'translateY(' + (scrolled * 0.3) + 'px) scale(1.1)';
+                    }
+                    heroTicking = false;
+                });
+                heroTicking = true;
             }
-        });
+        }, { passive: true });
     }
 
     // ============================================
@@ -121,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     if (lightboxClose) {
-// TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion.
         lightboxClose.addEventListener('click', function() {
             lightbox.classList.remove('active');
             document.body.style.overflow = '';
@@ -133,7 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === lightbox) {
                 lightbox.classList.remove('active');
                 document.body.style.overflow = '';
-// TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion.
             }
         });
     }
@@ -150,9 +166,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // ACTIVE NAV LINK ON SCROLL
     // ============================================
     const sections = document.querySelectorAll('section[id]');
-// TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion.
+    let navTicking = false;
 
-    window.addEventListener('scroll', function() {
+    function updateActiveNav() {
         var current = '';
         var scrollPosition = window.pageYOffset + 150;
 
@@ -164,7 +180,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 current = section.getAttribute('id');
             }
         });
-// TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion.
 
         navLinks.forEach(function(link) {
             link.classList.remove('active');
@@ -172,7 +187,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 link.classList.add('active');
             }
         });
-    });
+        navTicking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+        if (!navTicking) {
+            window.requestAnimationFrame(updateActiveNav);
+            navTicking = true;
+        }
+    }, { passive: true });
 
     // ============================================
     // TYPED EFFECT FOR HERO TAGLINE
@@ -210,9 +233,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (mainVideo) {
         mainVideo.addEventListener('click', function() {
             if (this.paused) {
-// TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion.
                 this.play().catch(function(err) {
-                    console.log('Error playing video:', err);
+                    console.warn('Video playback failed:', err.message);
                 });
             } else {
                 this.pause();
@@ -220,9 +242,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         mainVideo.addEventListener('error', function(e) {
-            console.log('Error loading video:', e.target.error);
-        });
-// TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion.
+            const error = e.target.error;
+            if (error) {
+                console.warn('Video error:', error.code, error.message);
+            }
+        }, true);
     }
 
     // ============================================
@@ -252,10 +276,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // PARALLAX FOR GALLERY ITEMS
     // ============================================
     const galleryItems = document.querySelectorAll('.gallery-item');
+    let galleryTicking = false;
     
-    window.addEventListener('scroll', function() {
+    function updateGalleryParallax() {
         galleryItems.forEach(item => {
-// TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion.
             const rect = item.getBoundingClientRect();
             const windowHeight = window.innerHeight;
             
@@ -265,7 +289,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 item.style.transform = `translateY(${translateY}px)`;
             }
         });
-    });
+        galleryTicking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+        if (!galleryTicking) {
+            window.requestAnimationFrame(updateGalleryParallax);
+            galleryTicking = true;
+        }
+    }, { passive: true });
 
     // ============================================
     // STAR RATING (Estético)

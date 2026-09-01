@@ -9,6 +9,7 @@ permiso de TEKNOTECH SERVICES
 /* ============================================
    Lio B Studios — Landing Page Styles
    Light Green Theme (Manual de Marca)
+   Optimizado para rendimiento y SEO
    ============================================ */
 
 /* === 1. Reset & Variables === */
@@ -62,6 +63,8 @@ permiso de TEKNOTECH SERVICES
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  scroll-padding-top: var(--header-height);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -78,8 +81,8 @@ body {
 img {
   max-width: 100%;
   display: block;
+  content-visibility: auto;
 }
-/* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
 
 a {
   text-decoration: none;
@@ -2141,4 +2144,49 @@ ul {
   border-radius: 2px;
   opacity: 0.5;
 }
-/* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
+
+/* === Accessibility: Reduced Motion === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-bg-img {
+    transform: none !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* === Focus Visible for Keyboard Navigation === */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--verde-lima);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* === Skip to Content (Accessibility) === */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--verde-lima);
+  color: var(--negro-grafito);
+  padding: 8px 16px;
+  z-index: 10001;
+  font-weight: 600;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
