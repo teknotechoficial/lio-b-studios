@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://teknotechoficial.github.io/lio-b-studios/sitemap.xml
