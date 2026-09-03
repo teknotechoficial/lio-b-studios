@@ -2103,6 +2103,21 @@ ul {
     font-size: 0.9rem;
   }
 }
+
+/* === 24b. Desktop — Imágenes más grandes === */
+@media (min-width: 769px) {
+  .historia-img {
+    max-width: 500px;
+  }
+
+  .image-frame-no-bg {
+    padding: 30px;
+  }
+
+  .footer-logo-img {
+    height: 100px;
+  }
+}
 /* TeknoTech Services - Creadores y Dueños. Prohibido vender o modificar sin autorizacion. */
 
 /* === 25. Marca de agua === */
